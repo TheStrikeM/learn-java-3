@@ -1,4 +1,4 @@
-package com.thestrikem.Interfaces;
+package com.thestrikem.Comparation;
 
 import java.util.ArrayList;
 import java.util.Collections;
