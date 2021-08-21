@@ -9,6 +9,8 @@ public class Main {
         integerList.add(2);
         integerList.add(3);
         System.out.println(ArrayListUtil.sumAllItems(integerList));
+        System.out.println(ArrayListUtil.firstElement(integerList));
+        System.out.println(ArrayListUtil.lastElement(integerList));
     }
 
 //    bad algorithm
@@ -47,6 +49,14 @@ class ArrayListUtil {
             finalResult += listIterator.next();
         }
         return finalResult;
+    }
+
+    public static <T> T firstElement(List<T> arrayList) {
+        return arrayList.get(0);
+    }
+
+    public static <T> T lastElement(List<T> arrayList) {
+        return arrayList.get(arrayList.size()-1);
     }
 
     public static <T> boolean concat(List<T> arrayList, List<T> listToConcat) {

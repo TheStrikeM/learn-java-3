@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
 //        Main.testFunc();
         System.out.println(Main.isIsogram("item"));
+        System.out.println(Main.spinWordsBestSolution("This is babeltype megabitch"));
     }
 
     public static String maskify(String input) {
@@ -116,5 +117,45 @@ public class Main {
         List<Character> tracer = new ArrayList<>();
         tracer.add('1');
         System.out.println(tracer.indexOf('6'));
+    }
+
+    public static String spinWordsBestSolution(String sentence) {
+        for (String a : sentence.split(" ")) {
+            if (a.length() > 4) sentence = sentence.replace(a, new StringBuilder(a).reverse());
+        }
+        return sentence;
+    }
+    public static String spinWordsBetterSolution(String sentence) {
+        Objects.requireNonNull(sentence);
+        String[] sentenceArray = sentence.split(" ");
+        for (int i = 0; i < sentenceArray.length; i++) {
+            if (sentenceArray[i].length() >= 5) sentenceArray[i] = new StringBuilder(sentenceArray[i]).reverse().toString();
+        }
+        return String.join(" ", sentenceArray);
+    }
+    public static String spinWords(String sentence) {
+        List<String> wordList = Arrays.asList(sentence.split(" "));
+        for (int i = 0; i < wordList.size(); i++) {
+            String word = wordList.get(i);
+            if (word.length() >= 5) wordList.set(i, Main.reverseString(word));
+        }
+        return Main.listToStringWithSpace(wordList);
+    }
+
+    public static String reverseString(String item) {
+        StringBuilder stringBuilder = new StringBuilder(item);
+        return stringBuilder.reverse().toString();
+    }
+    public static String listToStringWithSpace(List<String> stringList) {
+        StringBuilder finalResult = new StringBuilder("");
+        for (int i = 0; i < stringList.size(); i++) {
+            String item = stringList.get(i);
+            if (i == 0) {
+                finalResult.append(item);
+                continue;
+            }
+            finalResult.append(" "+item);
+        }
+        return finalResult.toString();
     }
 }
