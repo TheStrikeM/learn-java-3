@@ -19,9 +19,9 @@ public class Main {
 }
 
 
-class Student {
-    String name;
-    int course;
+final class Student {
+    final String name;
+    final int course;
 
     public Student(String name, int course) {
         this.name = name;
