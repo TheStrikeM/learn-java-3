@@ -176,4 +176,7 @@ public class Main {
         }
         return messageBuilder.toString();
     }
+    public static String reverseString1(String item) {
+        return new StringBuilder(item).reverse().toString();
+    }
 }
