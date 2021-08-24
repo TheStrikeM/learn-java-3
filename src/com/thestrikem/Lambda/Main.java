@@ -1,6 +1,7 @@
 package com.thestrikem.Lambda;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +13,8 @@ public class Main {
         students.add(new Student("Ekaterina", 8));
         students.add(new Student("Ekaterina", 4));
 
-        StudentsCheck studentsCheck = (Student student) -> student.getAvgGrade()<7 && student.getAvgGrade()>9;
-        StudentsInfo.filterAndWrite(students, studentsCheck);
+        Predicate<Student> predicateStudent = (Student student) -> student.getAvgGrade()<7;
+        StudentsInfo.filterAndWrite(students, predicateStudent);
     }
 }
 
@@ -53,13 +54,9 @@ class Student {
 }
 
 class StudentsInfo {
-    static void filterAndWrite(ArrayList<Student> students, StudentsCheck sc) {
+    static void filterAndWrite(ArrayList<Student> students, Predicate<Student> sc) {
         for (Student student : students) {
-            if (sc.check(student)) student.writeToConsole();
+            if (sc.test(student)) student.writeToConsole();
         }
     }
-}
-
-interface StudentsCheck {
-    boolean check(Student s);
 }
